@@ -1,0 +1,6 @@
+{
+  "Name": "PM05-PS02",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "Main.xaml"
+}

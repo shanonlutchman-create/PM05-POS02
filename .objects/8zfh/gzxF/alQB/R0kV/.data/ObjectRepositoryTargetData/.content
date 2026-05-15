@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="3teGDbBWBk6rl8MTXwrHBQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="dtmtech.co.za/PM05_PS02" DesignTimeRectangle="310, 681, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='vendor-name' tag='INPUT' type='text' class='' placeholder='e.g. Acme Suppliers (Pty) Ltd' aaname='Vendor Name' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="d17bfe86-88b4-40ee-9297-ab19340f0b95" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="310, 655, 330, 20" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Vendor Name' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Vendor Name' /&gt;" Guid="07cb67c8-e947-4ac3-ad88-2f173f0d4a1d" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="343b78b86da2f725ad5e031742e82611.jpg" xmlns="">09i9hbMRj1k6K41TWdaDAKw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="cuwct3UkhU-cZoYGNISQmg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="dtmtech.co.za/PM05_PS02" DesignTimeRectangle="183, 582, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='amount-zar' tag='INPUT' type='number' class='' placeholder='0.00' aaname='Amount (ZAR)' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="10ec976c-4c16-4715-88d2-60579d81c68f" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="183, 556, 330, 20" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Amount (ZAR)' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Amount (ZAR)' /&gt;" Guid="df1ad55e-d012-402f-a2d2-773f56a6ef3c" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="341b4ae2f0d35854a8af6faed19db68c.jpg" xmlns="">0a-Fv_sCoE02kviSEAHgQsA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

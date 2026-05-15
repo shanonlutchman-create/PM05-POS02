@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Edge Invoice Tracker — ZAR",
+  "Type": "App",
+  "Id": "8zfhvNmESUS7nBwtotoeUw",
+  "Reference": "qhjpPk5xZkK0MFrUi4Db0A/8zfhvNmESUS7nBwtotoeUw",
+  "Created": "2026-05-14T13:09:00.3469993Z",
+  "Updated": "2026-05-14T13:09:00.3469993Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.4.1.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

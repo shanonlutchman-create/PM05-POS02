@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Payment Due Date",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "wpljUSrh6kWRp_CHGVgu2Q",
+  "Reference": "qhjpPk5xZkK0MFrUi4Db0A/wpljUSrh6kWRp_CHGVgu2Q",
+  "ParentRef": "qhjpPk5xZkK0MFrUi4Db0A/alQBWLFGVUGzxLr5gx798g",
+  "Created": "2026-05-15T12:45:50.5091606Z",
+  "Updated": "2026-05-15T12:45:50.5091606Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.4.1.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

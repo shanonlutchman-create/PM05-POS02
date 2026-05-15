@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="oUB8qFzkaES6SZpOv0AkAg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="dtmtech.co.za/PM05_PS02" DesignTimeRectangle="183, 667, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='payment-due-date' tag='INPUT' type='text' class='' placeholder='Enter any text — e.g. End of month, 30 days, 2026-06-15' aaname='Payment Due Date' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="316fc76b-301d-46ef-96d9-785bb2015427" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="183, 641, 330, 19" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Payment Due Date' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Payment Due Date' /&gt;" Guid="b672e51f-45fd-41bb-bd59-adfc16b0debe" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="324cac5f7264d53429a85d7a70b6eb02.jpg" xmlns="">0_l1xRx-3nEmYKb9A5FOCtg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
