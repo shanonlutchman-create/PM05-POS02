@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ReadInvoices" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ReadInvoices" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_dtInvoices" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="in_datapath" Type="InArgument(x:String)" />
@@ -103,7 +103,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadInvoices" sap:VirtualizedContainerService.HintSize="1520,709" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ReadInvoices" sap:VirtualizedContainerService.HintSize="633,1217" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtInvoices" />
     </Sequence.Variables>
@@ -112,10 +112,47 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Starting Read action" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;[ReadInvoices] Begining to attempt to read data from &quot; + in_datapath.ToString()]" />
-    <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtInvoices]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV" FilePath="[in_datapath]" sap:VirtualizedContainerService.HintSize="450,170" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
-    <ui:LogMessage DisplayName="Log Message - Read Invoices" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[ReadInvoices] Successfully Read: &quot; + dtInvoices.RowCount().ToString() + &quot; Invoces&quot;]" />
-    <Assign DisplayName="Assign - Export dataable" sap:VirtualizedContainerService.HintSize="450,166" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message - Starting Read action" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="{x:Null}" Message="[&quot;[ReadInvoices] Begining to attempt to read data from &quot; + in_datapath.ToString()]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="452,678" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,221" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtInvoices]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV" Encoding="{x:Null}" FilePath="[in_datapath]" sap:VirtualizedContainerService.HintSize="416,161" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" IgnoreQuotes="{x:Null}" />
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="si:FileNotFoundException" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <ActivityAction x:TypeArguments="si:FileNotFoundException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="si:FileNotFoundException" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Catch - FileNotFoundException" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message -  SA Invoice_Not_Found" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;[ReadInvoice]: Could not find file: &quot; + in_datapath]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </TryCatch.Finally>
+    </TryCatch>
+    <ui:LogMessage DisplayName="Log Message - Read Invoices" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[ReadInvoices] Successfully Read: &quot; + dtInvoices.RowCount().ToString() + &quot; Invoces&quot;]" />
+    <Assign DisplayName="Assign - Export dataable" sap:VirtualizedContainerService.HintSize="452,166" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[out_dtInvoices]</OutArgument>
       </Assign.To>

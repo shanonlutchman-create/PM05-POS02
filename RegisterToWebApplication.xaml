@@ -49,6 +49,9 @@
       <x:String>UiPath.UIAutomationNext.Contracts</x:String>
       <x:String>System.Globalization</x:String>
       <x:String>System.Net</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -116,187 +119,269 @@
       <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
       <AssemblyReference>System.Net.Requests</AssemblyReference>
       <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RegisterToWebApplication" sap:VirtualizedContainerService.HintSize="1477,2781" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence DisplayName="RegisterToWebApplication" sap:VirtualizedContainerService.HintSize="1477,1840" sap2010:WorkflowViewState.IdRef="Sequence_5">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strInvoiceID" />
       <Variable x:TypeArguments="x:String" Name="datePaymentDueDate" />
       <Variable x:TypeArguments="x:String" Name="strVendorName" />
       <Variable x:TypeArguments="x:Double" Name="dblAmountZAR" />
       <Variable x:TypeArguments="x:String" Name="strStatus1" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtProcessed" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Begin WebAutomation" sap:VirtualizedContainerService.HintSize="488,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;[RegisterToWebApplication]  - Begining Web automation  &quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Edge Invoice Tracker — ZAR" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="488,2417" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="{x:Null}" InteractionMode="DebuggerApi" IsIncognito="{x:Null}" OpenMode="{x:Null}" OutUiElement="{x:Null}" ScopeGuid="7802a1de-fc79-4475-978b-6a9d749d7062" Timeout="{x:Null}" UserDataFolderMode="{x:Null}" UserDataFolderPath="{x:Null}" Version="V2" WebDriverMode="{x:Null}">
+    <ui:LogMessage DisplayName="Log Message - Begin WebAutomation" sap:VirtualizedContainerService.HintSize="594,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;[RegisterToWebApplication]  - Begining Web automation  &quot;]" />
+    <ui:BuildDataTable DataTable="[dtProcessed]" DisplayName="Build Data Table dtProcessed" sap:VirtualizedContainerService.HintSize="594,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Invoice_ID&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Vendor_Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Amount_ZAR&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Edge Invoice Tracker — ZAR" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="594,1384" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="{x:Null}" InteractionMode="DebuggerApi" IsIncognito="{x:Null}" OpenMode="{x:Null}" OutUiElement="{x:Null}" ScopeGuid="7802a1de-fc79-4475-978b-6a9d749d7062" Timeout="{x:Null}" UserDataFolderMode="{x:Null}" UserDataFolderPath="{x:Null}" Version="V2" WebDriverMode="{x:Null}">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,2286" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,1253" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each currentDataRow - process each row" sap:VirtualizedContainerService.HintSize="452,2226" sap2010:WorkflowViewState.IdRef="ForEach`1_1" MaxIterations="{x:Null}" Values="[in_dtInvoices.AsEnumerable()]">
+            <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each currentDataRow - process each row" sap:VirtualizedContainerService.HintSize="558,1193" sap2010:WorkflowViewState.IdRef="ForEach`1_1" MaxIterations="{x:Null}" Values="[in_dtInvoices.AsEnumerable()]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="currentDataRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,2104" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="556,1071" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_1">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[strInvoiceID]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[currentDataRow("Invoice_ID").ToString()]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_2">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[strVendorName]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[currentDataRow("Vendor_Name").ToString()]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_3">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[datePaymentDueDate]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[currentDataRow("Payment_Due_Date").ToString()]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_4">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:Double">[dblAmountZAR]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:Double">[CDbl(currentDataRow("Amount_ZAR"))]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_5">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[strStatus1]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[currentDataRow("Status").ToString()]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="Never" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into 'Invoice ID'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InUiElement="{x:Null}" InteractionMode="SameAsCard" OutUiElement="{x:Null}" ScopeIdentifier="7802a1de-fc79-4475-978b-6a9d749d7062" Text="[strInvoiceID]" Timeout="{x:Null}" Version="V5">
-                      <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="dtmtech.co.za/PM05_PS02" DesignTimeRectangle="183, 412, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='invoice-id' tag='INPUT' type='text' class='' placeholder='e.g. INV-2026-001' aaname='Invoice ID' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="3c7f6318-d3f8-424b-9828-5f058501b032" InformativeScreenshot="bcaafce8e6569819e6702de12e46f798.jpg" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
-                          <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                              <uix:Target DesignTimeRectangle="183, 386, 330, 20" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Invoice ID' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Invoice ID' /&gt;" Guid="1daa8b51-3936-48ca-b2d3-90f5730549bf" SearchSteps="FuzzySelector" />
-                            </scg:List>
-                          </uix:TargetAnchorable.Anchors>
-                        </uix:TargetAnchorable>
-                      </uix:NTypeInto.Target>
-                      <uix:NTypeInto.VerifyOptions>
-                        <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                          <uix:VerifyExecutionTypeIntoOptions.Retry>
-                            <InArgument x:TypeArguments="x:Boolean" />
-                          </uix:VerifyExecutionTypeIntoOptions.Retry>
-                          <uix:VerifyExecutionTypeIntoOptions.Timeout>
-                            <InArgument x:TypeArguments="x:Double" />
-                          </uix:VerifyExecutionTypeIntoOptions.Timeout>
-                        </uix:VerifyExecutionTypeIntoOptions>
-                      </uix:NTypeInto.VerifyOptions>
-                    </uix:NTypeInto>
-                    <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="Never" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into 'Vendor Name'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InUiElement="{x:Null}" InteractionMode="SameAsCard" OutUiElement="{x:Null}" ScopeIdentifier="7802a1de-fc79-4475-978b-6a9d749d7062" Text="[strVendorName]" Timeout="{x:Null}" Version="V5">
-                      <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="dtmtech.co.za/PM05_PS02" ContentHash="3teGDbBWBk6rl8MTXwrHBQ" DesignTimeRectangle="310, 681, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='vendor-name' tag='INPUT' type='text' class='' placeholder='e.g. Acme Suppliers (Pty) Ltd' aaname='Vendor Name' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="d17bfe86-88b4-40ee-9297-ab19340f0b95" InformativeScreenshot="343b78b86da2f725ad5e031742e82611.jpg" IsResponsive="True" Reference="qhjpPk5xZkK0MFrUi4Db0A/R0kVMZmnwUyFCOdm8Fa6kQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
-                          <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                              <uix:Target DesignTimeRectangle="310, 655, 330, 20" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Vendor Name' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Vendor Name' /&gt;" Guid="07cb67c8-e947-4ac3-ad88-2f173f0d4a1d" SearchSteps="FuzzySelector" />
-                            </scg:List>
-                          </uix:TargetAnchorable.Anchors>
-                        </uix:TargetAnchorable>
-                      </uix:NTypeInto.Target>
-                      <uix:NTypeInto.VerifyOptions>
-                        <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                          <uix:VerifyExecutionTypeIntoOptions.Retry>
-                            <InArgument x:TypeArguments="x:Boolean" />
-                          </uix:VerifyExecutionTypeIntoOptions.Retry>
-                          <uix:VerifyExecutionTypeIntoOptions.Timeout>
-                            <InArgument x:TypeArguments="x:Double" />
-                          </uix:VerifyExecutionTypeIntoOptions.Timeout>
-                        </uix:VerifyExecutionTypeIntoOptions>
-                      </uix:NTypeInto.VerifyOptions>
-                    </uix:NTypeInto>
-                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Amount (ZAR)'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_7" InteractionMode="SameAsCard" ScopeIdentifier="7802a1de-fc79-4475-978b-6a9d749d7062" Text="[dblAmountZAR.ToString()]" Version="V5">
-                      <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="dtmtech.co.za/PM05_PS02" ContentHash="cuwct3UkhU-cZoYGNISQmg" DesignTimeRectangle="183, 582, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='amount-zar' tag='INPUT' type='number' class='' placeholder='0.00' aaname='Amount (ZAR)' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="10ec976c-4c16-4715-88d2-60579d81c68f" InformativeScreenshot="341b4ae2f0d35854a8af6faed19db68c.jpg" IsResponsive="True" Reference="qhjpPk5xZkK0MFrUi4Db0A/HgiUlRGieE-hbe94fYGOXA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
-                          <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                              <uix:Target DesignTimeRectangle="183, 556, 330, 20" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Amount (ZAR)' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Amount (ZAR)' /&gt;" Guid="df1ad55e-d012-402f-a2d2-773f56a6ef3c" SearchSteps="FuzzySelector" />
-                            </scg:List>
-                          </uix:TargetAnchorable.Anchors>
-                        </uix:TargetAnchorable>
-                      </uix:NTypeInto.Target>
-                      <uix:NTypeInto.VerifyOptions>
-                        <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                          <uix:VerifyExecutionTypeIntoOptions.Retry>
-                            <InArgument x:TypeArguments="x:Boolean" />
-                          </uix:VerifyExecutionTypeIntoOptions.Retry>
-                          <uix:VerifyExecutionTypeIntoOptions.Timeout>
-                            <InArgument x:TypeArguments="x:Double" />
-                          </uix:VerifyExecutionTypeIntoOptions.Timeout>
-                        </uix:VerifyExecutionTypeIntoOptions>
-                      </uix:NTypeInto.VerifyOptions>
-                    </uix:NTypeInto>
-                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Payment Due Date'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_8" InteractionMode="SameAsCard" ScopeIdentifier="7802a1de-fc79-4475-978b-6a9d749d7062" Text="[datePaymentDueDate]" Version="V5">
-                      <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="dtmtech.co.za/PM05_PS02" ContentHash="oUB8qFzkaES6SZpOv0AkAg" DesignTimeRectangle="183, 667, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='payment-due-date' tag='INPUT' type='text' class='' placeholder='Enter any text — e.g. End of month, 30 days, 2026-06-15' aaname='Payment Due Date' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="316fc76b-301d-46ef-96d9-785bb2015427" InformativeScreenshot="324cac5f7264d53429a85d7a70b6eb02.jpg" IsResponsive="True" Reference="qhjpPk5xZkK0MFrUi4Db0A/wpljUSrh6kWRp_CHGVgu2Q" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
-                          <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                              <uix:Target DesignTimeRectangle="183, 641, 330, 19" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Payment Due Date' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Payment Due Date' /&gt;" Guid="b672e51f-45fd-41bb-bd59-adfc16b0debe" SearchSteps="FuzzySelector" />
-                            </scg:List>
-                          </uix:TargetAnchorable.Anchors>
-                        </uix:TargetAnchorable>
-                      </uix:NTypeInto.Target>
-                      <uix:NTypeInto.VerifyOptions>
-                        <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                          <uix:VerifyExecutionTypeIntoOptions.Retry>
-                            <InArgument x:TypeArguments="x:Boolean" />
-                          </uix:VerifyExecutionTypeIntoOptions.Retry>
-                          <uix:VerifyExecutionTypeIntoOptions.Timeout>
-                            <InArgument x:TypeArguments="x:Double" />
-                          </uix:VerifyExecutionTypeIntoOptions.Timeout>
-                        </uix:VerifyExecutionTypeIntoOptions>
-                      </uix:NTypeInto.VerifyOptions>
-                    </uix:NTypeInto>
-                    <uix:NClick ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click 'Save Invoice(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,185" sap2010:WorkflowViewState.IdRef="NClick_1" InUiElement="{x:Null}" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7802a1de-fc79-4475-978b-6a9d749d7062" Timeout="{x:Null}" UnblockInput="{x:Null}" Version="V5">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable BrowserURL="dtmtech.co.za/PM05_PS02" ContentHash="m61NfrdWe0W2j4Tt83E4Mg" DesignTimeRectangle="183, 734, 330, 40" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='submit-btn' tag='BUTTON' type='submit' class='btn btn-primary' aaname='                                                                                                                                                         Save Invoice                         ' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Save Invoice' /&gt;" Guid="0fca8d11-fb50-4ea4-81fd-1f8404f574d8" InformativeScreenshot="15e0889f60aee9125baa540d52c35653.jpg" Reference="qhjpPk5xZkK0MFrUi4Db0A/4nGthjc86U6qrqqMPSOupA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
-                          <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                              <uix:Target DesignTimeRectangle="317, 745, 85, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='submit-btn' tag='SPAN' type='' class='' aaname='Save Invoice' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Save Invoice' /&gt;" Guid="64246f46-d7e9-4248-8d3a-ddec28653692" SearchSteps="FuzzySelector" />
-                            </scg:List>
-                          </uix:TargetAnchorable.Anchors>
-                          <uix:TargetAnchorable.PointOffset>
-                            <uix:PointOffset X="3" Y="-2" />
-                          </uix:TargetAnchorable.PointOffset>
-                        </uix:TargetAnchorable>
-                      </uix:NClick.Target>
-                    </uix:NClick>
+                    <Sequence DisplayName="Sequence Assign Values to variable " sap:VirtualizedContainerService.HintSize="522,57" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[strInvoiceID]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[currentDataRow("Invoice_ID").ToString()]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[strVendorName]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[currentDataRow("Vendor_Name").ToString()]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[datePaymentDueDate]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[currentDataRow("Payment_Due_Date").ToString()]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Double">[dblAmountZAR]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Double">[CDbl(currentDataRow("Amount_ZAR"))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_5">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[strStatus1]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[currentDataRow("Status").ToString()]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                    <Sequence DisplayName="Sequence  Error Handling" sap:VirtualizedContainerService.HintSize="522,849" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtProcessed]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,757" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                        <ui:ForEachRow.Body>
+                          <ActivityAction x:TypeArguments="sd:DataRow">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,584" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If sap2010:Annotation.AnnotationText=" Duplicate Invoice - If an invoice ID is encountered that has already been processed (you can simulate this by checking against a list of already processed IDs or a simple flag&#xD;&#xA;" Condition="[CurrentRow(&quot;Invoice_ID&quot;).ToString() = strInvoiceID]" DisplayName="If - Duplicate Invoice" sap:VirtualizedContainerService.HintSize="452,524" sap2010:WorkflowViewState.IdRef="If_1">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If.Then>
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,227" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:WriteTextFile FileName="{x:Null}" Output="{x:Null}" DisplayName="Write Text File exception_log" File="[LocalResource.FromPath(&quot;Data\\Output\\exception_log.txt&quot;)]" sap:VirtualizedContainerService.HintSize="416,167" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[&quot;exception: Duplicate Invoice : &quot; + strInvoiceID]" />
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:ForEachRow.Body>
+                      </ui:ForEachRow>
+                    </Sequence>
+                    <Sequence DisplayName="Sequence Brower Automation " sap:VirtualizedContainerService.HintSize="522,57" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="Never" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into 'Invoice ID'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InUiElement="{x:Null}" InteractionMode="SameAsCard" OutUiElement="{x:Null}" ScopeIdentifier="7802a1de-fc79-4475-978b-6a9d749d7062" Text="[strInvoiceID]" Timeout="{x:Null}" Version="V5">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable BrowserURL="dtmtech.co.za/PM05_PS02" DesignTimeRectangle="183, 412, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='invoice-id' tag='INPUT' type='text' class='' placeholder='e.g. INV-2026-001' aaname='Invoice ID' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="3c7f6318-d3f8-424b-9828-5f058501b032" InformativeScreenshot="bcaafce8e6569819e6702de12e46f798.jpg" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                <uix:Target DesignTimeRectangle="183, 386, 330, 20" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Invoice ID' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Invoice ID' /&gt;" Guid="1daa8b51-3936-48ca-b2d3-90f5730549bf" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                        <uix:NTypeInto.VerifyOptions>
+                          <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                            <uix:VerifyExecutionTypeIntoOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionTypeIntoOptions.Retry>
+                            <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                          </uix:VerifyExecutionTypeIntoOptions>
+                        </uix:NTypeInto.VerifyOptions>
+                      </uix:NTypeInto>
+                      <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickBeforeMode="Single" ClipboardMode="Never" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DeselectAfter="{x:Null}" DisplayName="Type Into 'Vendor Name'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InUiElement="{x:Null}" InteractionMode="SameAsCard" OutUiElement="{x:Null}" ScopeIdentifier="7802a1de-fc79-4475-978b-6a9d749d7062" Text="[strVendorName]" Timeout="{x:Null}" Version="V5">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable BrowserURL="dtmtech.co.za/PM05_PS02" ContentHash="3teGDbBWBk6rl8MTXwrHBQ" DesignTimeRectangle="310, 681, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='vendor-name' tag='INPUT' type='text' class='' placeholder='e.g. Acme Suppliers (Pty) Ltd' aaname='Vendor Name' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="d17bfe86-88b4-40ee-9297-ab19340f0b95" InformativeScreenshot="343b78b86da2f725ad5e031742e82611.jpg" IsResponsive="True" Reference="qhjpPk5xZkK0MFrUi4Db0A/R0kVMZmnwUyFCOdm8Fa6kQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="310, 655, 330, 20" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Vendor Name' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Vendor Name' /&gt;" Guid="07cb67c8-e947-4ac3-ad88-2f173f0d4a1d" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                        <uix:NTypeInto.VerifyOptions>
+                          <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                            <uix:VerifyExecutionTypeIntoOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionTypeIntoOptions.Retry>
+                            <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                          </uix:VerifyExecutionTypeIntoOptions>
+                        </uix:NTypeInto.VerifyOptions>
+                      </uix:NTypeInto>
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Amount (ZAR)'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_7" InteractionMode="SameAsCard" ScopeIdentifier="7802a1de-fc79-4475-978b-6a9d749d7062" Text="[dblAmountZAR.ToString()]" Version="V5">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable BrowserURL="dtmtech.co.za/PM05_PS02" ContentHash="cuwct3UkhU-cZoYGNISQmg" DesignTimeRectangle="183, 582, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='amount-zar' tag='INPUT' type='number' class='' placeholder='0.00' aaname='Amount (ZAR)' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="10ec976c-4c16-4715-88d2-60579d81c68f" InformativeScreenshot="341b4ae2f0d35854a8af6faed19db68c.jpg" IsResponsive="True" Reference="qhjpPk5xZkK0MFrUi4Db0A/HgiUlRGieE-hbe94fYGOXA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                <uix:Target DesignTimeRectangle="183, 556, 330, 20" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Amount (ZAR)' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Amount (ZAR)' /&gt;" Guid="df1ad55e-d012-402f-a2d2-773f56a6ef3c" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                        <uix:NTypeInto.VerifyOptions>
+                          <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                            <uix:VerifyExecutionTypeIntoOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionTypeIntoOptions.Retry>
+                            <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                          </uix:VerifyExecutionTypeIntoOptions>
+                        </uix:NTypeInto.VerifyOptions>
+                      </uix:NTypeInto>
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Payment Due Date'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,246" sap2010:WorkflowViewState.IdRef="NTypeInto_8" InteractionMode="SameAsCard" ScopeIdentifier="7802a1de-fc79-4475-978b-6a9d749d7062" Text="[datePaymentDueDate]" Version="V5">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable BrowserURL="dtmtech.co.za/PM05_PS02" ContentHash="oUB8qFzkaES6SZpOv0AkAg" DesignTimeRectangle="183, 667, 330, 41" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='payment-due-date' tag='INPUT' type='text' class='' placeholder='Enter any text — e.g. End of month, 30 days, 2026-06-15' aaname='Payment Due Date' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="316fc76b-301d-46ef-96d9-785bb2015427" InformativeScreenshot="324cac5f7264d53429a85d7a70b6eb02.jpg" IsResponsive="True" Reference="qhjpPk5xZkK0MFrUi4Db0A/wpljUSrh6kWRp_CHGVgu2Q" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                <uix:Target DesignTimeRectangle="183, 641, 330, 19" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Payment Due Date' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Payment Due Date' /&gt;" Guid="b672e51f-45fd-41bb-bd59-adfc16b0debe" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                        <uix:NTypeInto.VerifyOptions>
+                          <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                            <uix:VerifyExecutionTypeIntoOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionTypeIntoOptions.Retry>
+                            <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                          </uix:VerifyExecutionTypeIntoOptions>
+                        </uix:NTypeInto.VerifyOptions>
+                      </uix:NTypeInto>
+                      <uix:NClick ActivateBefore="True" AlterIfDisabled="{x:Null}" ClickType="Single" ContinueOnError="{x:Null}" CursorMotionType="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Click 'Save Invoice(1)'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,185" sap2010:WorkflowViewState.IdRef="NClick_1" InUiElement="{x:Null}" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" OutUiElement="{x:Null}" ScopeIdentifier="7802a1de-fc79-4475-978b-6a9d749d7062" Timeout="{x:Null}" UnblockInput="{x:Null}" Version="V5">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable BrowserURL="dtmtech.co.za/PM05_PS02" ContentHash="m61NfrdWe0W2j4Tt83E4Mg" DesignTimeRectangle="183, 734, 330, 40" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='submit-btn' tag='BUTTON' type='submit' class='btn btn-primary' aaname='                                                                                                                                                         Save Invoice                         ' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Save Invoice' /&gt;" Guid="0fca8d11-fb50-4ea4-81fd-1f8404f574d8" InformativeScreenshot="15e0889f60aee9125baa540d52c35653.jpg" Reference="qhjpPk5xZkK0MFrUi4Db0A/4nGthjc86U6qrqqMPSOupA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="317, 745, 85, 18" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='submit-btn' tag='SPAN' type='' class='' aaname='Save Invoice' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Save Invoice' /&gt;" Guid="64246f46-d7e9-4248-8d3a-ddec28653692" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                            <uix:TargetAnchorable.PointOffset>
+                              <uix:PointOffset X="3" Y="-2" />
+                            </uix:TargetAnchorable.PointOffset>
+                          </uix:TargetAnchorable>
+                        </uix:NClick.Target>
+                      </uix:NClick>
+                    </Sequence>
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[CType({strInvoiceID, strVendorName, dblAmountZAR}, Object())]" DataTable="[dtProcessed]" DisplayName="Add Data Row - Saved Processed row" sap:VirtualizedContainerService.HintSize="522,48" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:AddDataRow>
                   </Sequence>
                 </ActivityAction>
               </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:ForEach>
           </Sequence>
         </ActivityAction>
@@ -309,9 +394,22 @@
         </ActivityFunc>
       </uix:NApplicationCard.OCREngine>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="1030, -1097, 1936, 1048" BrowserType="Edge" ContentHash="tzaXvsPXEEqNWazJ9hu_qg" IconBase64="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" InformativeScreenshot="eeeb2acb01b33951ca9744343cfe733d.jpg" Reference="qhjpPk5xZkK0MFrUi4Db0A/alQBWLFGVUGzxLr5gx798g" Selector="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" Url="https://dtmtech.co.za/PM05_PS02/" Version="V3" />
+        <uix:TargetApp Area="1030, -1097, 1936, 1048" BrowserType="Edge" ContentHash="tzaXvsPXEEqNWazJ9hu_qg" IconBase64="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" InformativeScreenshot="eeeb2acb01b33951ca9744343cfe733d.jpg" Reference="qhjpPk5xZkK0MFrUi4Db0A/alQBWLFGVUGzxLr5gx798g" Selector="&lt;html app='msedge.exe' title='Invoice Tracker — ZAR' /&gt;" Url="https://dtmtech.co.za/PM05_PS02/" Version="V3">
+          <uix:TargetApp.Arguments>
+            <InArgument x:TypeArguments="x:String" />
+          </uix:TargetApp.Arguments>
+          <uix:TargetApp.WorkingDirectory>
+            <InArgument x:TypeArguments="x:String" />
+          </uix:TargetApp.WorkingDirectory>
+        </uix:TargetApp>
       </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
-    <ui:LogMessage DisplayName="Log Message - Completed WebAutomation" sap:VirtualizedContainerService.HintSize="488,166" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;[RegisterToWebApplication]  - Completed Web automation  &quot;]" />
+    <ui:LogMessage DisplayName="Log Message - Completed WebAutomation" sap:VirtualizedContainerService.HintSize="594,166" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;[RegisterToWebApplication]  - Completed Web automation  &quot;]" />
   </Sequence>
 </Activity>
